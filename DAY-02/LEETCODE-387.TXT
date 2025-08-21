@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        // unordered_map<char,int>har;
+        // for(char c:s) {
+        //     har[c]++;
+        // }
+        // for(int i=0;i<s.size();i++){
+        //     if(har[s[i]]==1){
+        //         return i;
+        //     }
+        // }
+
+        // return -1;
+
+        vector<int> har(26,0);
+
+        for(char c:s) {
+            har[c-'a']++;
+        }
+
+        for(int i=0;i<s.size();i++) {
+            if(har[s[i]-'a']==1) {
+                return i;
+            }
+        }
+
+        return -1;
+
+    }
+};
