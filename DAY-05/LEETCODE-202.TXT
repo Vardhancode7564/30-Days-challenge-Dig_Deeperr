@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isHappy(int n) {
+        unordered_set<int>mpp;
+
+        while(n!= 1) {
+            if (mpp.count(n)) return false;
+            mpp.insert(n);
+            n=digitSquareSum(n);
+        }
+
+        return true;
+    }
+
+private:
+    int digitSquareSum(int n) {
+        int sum=0;
+        while(n>0) {
+            int d=n%10;
+            sum+=d*d;
+            n/=10;
+        }
+        return sum;
+    }
+};
