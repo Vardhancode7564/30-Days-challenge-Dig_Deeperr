@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int n=chars.size();
+        int har=0;  
+        int var=0;  
+        while(var<n) {
+            char chh=chars[var];
+            int count=0;
+            while(var<n&&chars[var]==chh) {
+                var++;
+                count++;
+            }
+            chars[har++]=chh;
+            if(count>1){
+                for (char ch:to_string(count)) {
+                    chars[har++]=ch;
+                }
+            }
+        }
+        return har;  
+    }
+};

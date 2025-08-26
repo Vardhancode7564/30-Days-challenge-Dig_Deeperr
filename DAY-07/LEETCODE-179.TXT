@@ -1,0 +1,23 @@
+class Solution {
+public:
+    static bool compare(string &a,string &b) {
+        return a+b>b+a;
+    }
+
+    string largestNumber(vector<int>& nums) {
+        vector<string>har;
+        for(int n:nums){
+            har.push_back(to_string(n));
+        }
+
+        sort(har.begin(),har.end(),compare);
+
+        if(har[0]=="0") return "0";
+
+        string re="";
+        for (string &s:har){
+            re+=s;
+        }
+        return re;
+    }
+};
