@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n=nums2.size();
+       
+        unordered_map<int,int>mpp;
+        for(int i=0;i<n;i++){
+            int var=-1;
+            for(int j=i+1;j<n;j++){
+                if(nums2[j]>nums2[i]) {
+                    var=nums2[j];
+                    break;
+                }
+            }
+            mpp[nums2[i]]=var;
+        }
+        vector<int>ans(nums1.size());
+        for(int i=0;i<nums1.size();i++){
+            ans[i]=mpp[nums1[i]];
+        }
+        return ans;
+    }
+};
