@@ -1,0 +1,26 @@
+#include <bits/stdc++.h> 
+bool validAbbreviation (string &str, string &abbr) {
+	 int i=0,j=0;
+        
+        while(i<str.size()&&j<abbr.size()) {
+            if(isalpha(abbr[j])) {
+                if(str[i]!=abbr[j]) return false;
+                i++;
+                j++;
+            } else{
+                if(abbr[j]=='0') return false;
+                
+                int start=j;
+                while(j<abbr.size()&&isdigit(abbr[j])){
+                    j++;
+                }
+                
+              
+                string numStr=abbr.substr(start,j-start);
+                int num=stoi(numStr);
+                i+=num; 
+            }
+        }
+        
+        return i==str.size()&&j==abbr.size();
+}
