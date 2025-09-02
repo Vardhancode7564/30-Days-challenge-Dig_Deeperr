@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool check(vector<int>&nums,int k,int mid){
+        int cnt=1,har=0;
+        for(int num:nums){
+            if(har+num>mid){
+                cnt++;
+                har=num;
+                if(cnt>k) return false;
+            }else{
+                har+=num;
+            }
+        }
+        return true;
+    }
+    int splitArray(vector<int>& nums, int k) {
+        int low=*max_element(nums.begin(),nums.end());
+        int high=accumulate(nums.begin(),nums.end(),0);
+        int ans=-1;
+        while(low<=high){
+            int mid=(low+high)/2; 
+            if(check(nums,k,mid)){
+                ans=mid;
+                high=mid-1;
+            }else{
+                low=mid+1;
+            }
+        }
+        return ans;
+    }
+};

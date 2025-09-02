@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int arrangeCoins(int n) {
+    //     int har=(n/2)+1;
+    //     for(int i=1;i<=har;i++){
+    //         n-=i;
+    //         if(n<0){
+    //             return i-1;
+    //         }  
+    //     }
+    //    return har;
+        long long left=1,right=n;
+        int ans=0;
+        while(left<=right){
+            long long mid=(left+right)/2;
+            long long coins=mid*(mid+1)/2;
+            if(coins<=n){
+                ans=mid;
+                left=mid+1;
+            }else{
+                right=mid-1;
+            }
+
+        }
+        return ans;
+    }
+};
