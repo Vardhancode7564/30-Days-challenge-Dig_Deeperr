@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        int n=s.length();
+        vector<char>arr(n); 
+        int top=-1;     
+        for(char c:s) {
+            if(top>=0&&arr[top]==c) {
+                 top--;
+            }else{
+                arr[++top]=c;
+            }
+        }
+        string har="";
+        for(int j=0;j<=top;j++){
+                har+=arr[j];
+        }
+        return har;
+    }
+};

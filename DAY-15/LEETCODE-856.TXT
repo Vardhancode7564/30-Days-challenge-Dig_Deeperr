@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int scoreOfParentheses(string s) {
+        stack<int>st;
+        int count=0;
+
+        for(char c:s){
+            if(c=='('){
+                st.push(count);
+                count=0;
+            }else{
+                int har=st.top();
+                st.pop();
+                if(count==0) count=har+1;
+                else count=har+2*count;
+            }
+        }
+        return count;
+          
+    }
+};
