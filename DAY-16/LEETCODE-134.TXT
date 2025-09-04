@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int n=gas.size();
+        int totalcost=0,totalgas=0;
+        int har=0,var=0;
+        for(int i=0;i<n;i++){
+            totalcost+=cost[i];
+            totalgas+=gas[i];
+            har+=gas[i]-cost[i];
+
+            if(har<0){
+                var=i+1;
+                har=0;
+            }
+        }
+        return (totalgas<totalcost)?-1:var;
+    }
+};
