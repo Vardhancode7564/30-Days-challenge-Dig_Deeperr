@@ -1,0 +1,28 @@
+class KthLargest {
+public:
+    int har;
+    multiset<int>ms;
+
+    KthLargest(int k, vector<int>& nums) {
+        har=k;
+        for(int num:nums) {
+            ms.insert(num);
+            if((int)ms.size()>har){
+                ms.erase(ms.begin()); 
+            }
+        }
+    }
+    
+    int add(int val){
+        ms.insert(val);
+        if((int)ms.size()>har) {
+            ms.erase(ms.begin());
+        }
+        return *ms.begin();
+    }
+};
+/**
+ * Your KthLargest object will be instantiated and called as such:
+ * KthLargest* obj = new KthLargest(k, nums);
+ * int param_1 = obj->add(val);
+ */
